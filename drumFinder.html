@@ -1,0 +1,48 @@
+<html>
+  <header>
+    <link rel="stylesheet" href="drumFinder.css" />
+    <script src="frameworks/scrollmagic/minified/ScrollMagic.min.js"></script>
+    <script src="frameworks/scrollmagic/minified/plugins/animation.gsap.min.js"></script>
+    <script src="frameworks/minified/TweenMax.min.js"></script>
+    <script src="frameworks/minified/TimelineMax.min.js"></script>
+    <script src="frameworks/minified/plugins/CSSPlugin.min.js"></script>
+    <script src="vue/vue.js"></script>
+  </header>
+  <body>
+    <div id="app">
+      <div class="header">
+        <h3>What kind of drum set can we find you?</h3>
+      </div>
+      <div v-show="!getStarted" id="getStartedDiv">
+        <button id="getStartedButton" @click="getStarted=true, fade()">
+          Let's get started!
+        </button>
+      </div>
+      <div v-show="getStarted" class="questions">
+        <h2>
+          {{ questions[order].q }}
+        </h2>
+        <div class="answers">
+          <button
+            v-for="answer in questions[order].a"
+            @click="fade(), nextQuestion(), loadArr(), getAns(questions), anyQ(), tally()"
+          >
+            {{ answer }}
+          </button>
+        </div>
+      </div>
+      <div class="images">
+        <div><img class="img1" :src="loadedArr[0]" alt="" /></div>
+        <div><img class="img2" :src="loadedArr[1]" alt="" /></div>
+        <div><img class="img3" :src="loadedArr[2]" alt="" /></div>
+        <div><img class="img4" :src="loadedArr[3]" alt="" /></div>
+        <div><img class="img5" :src="loadedArr[4]" alt="" /></div>
+        <div><img class="img1" :src="loadedArr[5]" alt="" /></div>
+        <div><img class="img2" :src="loadedArr[6]" alt="" /></div>
+        <div><img class="img5" :src="loadedArr[7]" alt="" /></div>
+      </div>
+    </div>
+
+    <script src="drumFinder.js"></script>
+  </body>
+</html>
