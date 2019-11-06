@@ -4,13 +4,15 @@ let vm = new Vue({
     order: 0,
     nomorequestions: false,
     getStarted: false,
+    class: "img1",
     drumTable: [
       { brand: "ddrum", points: 0 },
       { brand: "dw", points: 0 },
       { brand: "gretch", points: 0 },
       { brand: "ocdrum", points: 0 },
       { brand: "pearl", points: 0 },
-      { brand: "sonar", points: 0 }
+      { brand: "sonar", points: 0 },
+      { brand: "sjc", points: 0 }
     ],
     questions: [
       {
@@ -19,12 +21,10 @@ let vm = new Vue({
         p: [
           {
             point: function() {
-              console.log(vm.drumTable[0].points);
               vm.drumTable[0].points += 2;
-              console.log(vm.drumTable[0].points);
               vm.drumTable[1].points += 3;
               vm.drumTable[3].points += 2;
-              return "you chose dw";
+              vm.drumTable[6].points += 2;
             }
           },
           {
@@ -58,6 +58,7 @@ let vm = new Vue({
             point: function() {
               vm.drumTable[0].points += 3;
               vm.drumTable[3].points += 2;
+              vm.drumTable[6].points += 2;
             }
           },
           {
@@ -87,7 +88,7 @@ let vm = new Vue({
     ],
 
     gretch: [
-      "resources/gretch/g1.jpeg",
+      "resources/gretch/g1.jpg",
       "resources/gretch/g2.jpg",
       "resources/gretch/g3.jpg",
       "resources/gretch/g4.jpg",
@@ -104,7 +105,40 @@ let vm = new Vue({
       "resources/ddrum/dd5.jpg",
       "resources/ddrum/dd6.jpg",
       "resources/ddrum/dd7.jpeg",
-      "resources/ddrum/dd8.jpg"
+      "resources/ddrum/dd8.jpg",
+      "resources/ddrum/dd9.jpg",
+      "resources/ddrum/dd10.jpg"
+    ],
+    dw: [
+      "resources/dw/dw1.jpg",
+      "resources/dw/dw2.jpg",
+      "resources/dw/dw3.jpg",
+      "resources/dw/dw4.jpg",
+      "resources/dw/dw5.jpg",
+      "resources/dw/dw6.jpg",
+      "resources/dw/dw7.jpg",
+      "resources/dw/dw8.png",
+      "resources/dw/dw9.jpg",
+      "resources/dw/dw10.jpg",
+      "resources/dw/dw11.jpg"
+    ],
+    ocdrum: [
+      "resources/ocdrum/oc1.jpg",
+      "resources/ocdrum/oc2.jpg",
+      "resources/ocdrum/oc3.jpg",
+      "resources/ocdrum/oc4.png",
+      "resources/ocdrum/oc5.jpg",
+      "resources/ocdrum/oc6.jpg",
+      "resources/ocdrum/oc7.jpg"
+    ],
+    sjc: [
+      "resources/sjc/sjc1.jpg",
+      "resources/sjc/sjc2.jpg",
+      "resources/sjc/sjc3.jpg",
+      "resources/sjc/sjc4.png",
+      "resources/sjc/sjc5.jpg",
+      "resources/sjc/sjc6.jpg",
+      "resources/sjc/sjc7.jpg"
     ]
   },
   computed: {
@@ -112,7 +146,12 @@ let vm = new Vue({
       return this.ddrum;
     },
     loadedArr() {
-      let combo = this.gretch.concat(this.ddrum);
+      let combo = this.gretch.concat(
+        this.ddrum,
+        this.dw,
+        this.ocdrum,
+        this.sjc
+      );
 
       return this.shuffle(combo);
     }
@@ -186,7 +225,9 @@ let vm = new Vue({
       let most = tally.reduce((acc, nxt) => {
         return acc > nxt ? acc : nxt;
       });
-      console.log(`The brand with the most points has: ${most}`);
+      console.log(
+        `The brand with the most points has: ${most} and ${this.loadedArr}`
+      );
     },
     anyQ() {
       if (this.nomorequestions) {

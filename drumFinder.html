@@ -14,7 +14,7 @@
         <h3>What kind of drum set can we find you?</h3>
       </div>
       <div v-show="!getStarted" id="getStartedDiv">
-        <button id="getStartedButton" @click="getStarted=true, fade()">
+        <button id="getStartedButton" @click="getStarted=true">
           Let's get started!
         </button>
       </div>
@@ -32,14 +32,17 @@
         </div>
       </div>
       <div class="images">
-        <div><img class="img1" :src="loadedArr[0]" alt="" /></div>
+        <div v-for="(img, ind) in loadedArr">
+          <img class="class" :src="img" alt="" />
+        </div>
+        <!-- <div><img class="img1" :src="loadedArr[0]" alt="" /></div>
         <div><img class="img2" :src="loadedArr[1]" alt="" /></div>
         <div><img class="img3" :src="loadedArr[2]" alt="" /></div>
         <div><img class="img4" :src="loadedArr[3]" alt="" /></div>
         <div><img class="img5" :src="loadedArr[4]" alt="" /></div>
         <div><img class="img1" :src="loadedArr[5]" alt="" /></div>
         <div><img class="img2" :src="loadedArr[6]" alt="" /></div>
-        <div><img class="img5" :src="loadedArr[7]" alt="" /></div>
+        <div><img class="img5" :src="loadedArr[7]" alt="" /></div> -->
       </div>
     </div>
 
