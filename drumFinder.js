@@ -77,14 +77,36 @@ let vm = new Vue({
           {
             point: function() {
               vm.drumTable[0].points += 4;
-            },
+            }
+          },
+          {
             point: function() {
               vm.drumTable[1].points += 4;
             }
           }
         ]
       },
-      { q: "Do you need a lot of space to play?", a: ["yes", "no"] }
+      {
+        q: "Do you need a lot of space to play?",
+        a: ["yes", "no"],
+        p: [
+          {
+            point: function() {
+              vm.drumTable[0].points += 2;
+              vm.drumTable[1].points += 2;
+              vm.drumTable[2].points += 2;
+              vm.drumTable[4].points += 2;
+              vm.drumTable[6].points += 2;
+            }
+          },
+          {
+            point: function() {
+              vm.drumTable[3].points += 2;
+              vm.drumTable[5].points += 2;
+            }
+          }
+        ]
+      }
     ],
 
     gretch: [
@@ -139,6 +161,33 @@ let vm = new Vue({
       "resources/sjc/sjc5.jpg",
       "resources/sjc/sjc6.jpg",
       "resources/sjc/sjc7.jpg"
+    ],
+    sonar: [
+      "resources/sonar/sd1.jpg",
+      "resources/sonar/sd2.jpg",
+      "resources/sonar/sd3.jpg",
+      "resources/sonar/sd4.jpg",
+      "resources/sonar/sd5.jpg",
+      "resources/sonar/sd6.jpg",
+      "resources/sonar/sd7.jpg",
+      "resources/sonar/sd8.png",
+      "resources/sonar/sd9.webp",
+      "resources/sonar/sd10.jpg",
+      "resources/sonar/sd11.jpg"
+    ],
+    pearl: [
+      "resources/pearl/pd1.jpg",
+      "resources/pearl/pd2.jpg",
+      "resources/pearl/pd3.jpg",
+      "resources/pearl/pd4.jpg",
+      "resources/pearl/pd5.jpeg",
+      "resources/pearl/pd6.jpg",
+      "resources/pearl/pd7.jpg",
+      "resources/pearl/pd8.jpeg",
+      "resources/pearl/pd9.jpg",
+      "resources/pearl/pd10.jpeg",
+      "resources/pearl/pd11.jpeg",
+      "resources/pearl/pd12.jpg"
     ]
   },
   computed: {
@@ -150,7 +199,11 @@ let vm = new Vue({
         this.ddrum,
         this.dw,
         this.ocdrum,
-        this.sjc
+        this.sjc,
+        this.sonar,
+        this.pearl,
+        this.ddrum,
+        this.dw
       );
 
       return this.shuffle(combo);
@@ -225,14 +278,17 @@ let vm = new Vue({
       let most = tally.reduce((acc, nxt) => {
         return acc > nxt ? acc : nxt;
       });
-      console.log(
-        `The brand with the most points has: ${most} and ${this.loadedArr}`
-      );
     },
     anyQ() {
       if (this.nomorequestions) {
         console.log("no more questions at this time");
       }
+    },
+    reset() {
+      this.drumTable.forEach(brand => {
+        brand.points = 0;
+        this.order = 0;
+      });
     }
   }
 });
@@ -318,3 +374,57 @@ questionsOut.to(".questions", 0.6, {
   opacity: "0",
   ease: Power2.easeIn
 });
+
+// scroll magic
+// controllers
+const controllerGameStart = new ScrollMagic.Controller();
+const controlleri = new ScrollMagic.Controller();
+
+// tweens
+const tweeni = TweenMax.to(".header", 0.5, {
+  backgroundColor: "black",
+  color: "white",
+  height: "10vh",
+  fontSize: "20px"
+});
+const tweenGameStart = TweenMax.to("#getStartedDiv", 0.5, {
+  x: "40vw",
+  y: "60vh",
+  width: "80px",
+  height: "80px",
+  borderRadius: "50%"
+});
+
+// scenes
+const scenei = new ScrollMagic.Scene({
+  triggerElement: "#notStartedWrap",
+  triggerHook: "onCenter",
+  offset: 250,
+  // duration: 100,
+  reverse: true
+})
+  .on("progress", event => {
+    let ungrey = document.getElementById("notStartedWrap");
+    let body = document.getElementsByTagName("div");
+
+    if (event.progress === 1) {
+      vm.getStarted = true;
+      ungrey.style.opacity = 0;
+      body[0].style.overflow = "hidden";
+      vm.reset();
+    } else {
+      vm.getStarted = false;
+      ungrey.style.opacity = 0.6;
+    }
+  })
+  .setTween(tweeni)
+  .addTo(controlleri);
+
+const sceneGameStart = new ScrollMagic.Scene({
+  triggerElement: "#notStartedWrap",
+  triggerHook: "onCenter",
+  offset: 250,
+  reverse: true
+})
+  .setTween(tweenGameStart)
+  .addTo(controllerGameStart);

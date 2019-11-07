@@ -1,9 +1,9 @@
 <html>
   <header>
     <link rel="stylesheet" href="drumFinder.css" />
+    <script src="frameworks/minified/TweenMax.min.js"></script>
     <script src="frameworks/scrollmagic/minified/ScrollMagic.min.js"></script>
     <script src="frameworks/scrollmagic/minified/plugins/animation.gsap.min.js"></script>
-    <script src="frameworks/minified/TweenMax.min.js"></script>
     <script src="frameworks/minified/TimelineMax.min.js"></script>
     <script src="frameworks/minified/plugins/CSSPlugin.min.js"></script>
     <script src="vue/vue.js"></script>
@@ -11,12 +11,14 @@
   <body>
     <div id="app">
       <div class="header">
+        <p>Created by: <a href="#"> Jonathan Cooper</a></p>
         <h3>What kind of drum set can we find you?</h3>
       </div>
-      <div v-show="!getStarted" id="getStartedDiv">
-        <button id="getStartedButton" @click="getStarted=true">
-          Let's get started!
-        </button>
+      <div id="notStartedWrap"></div>
+      <div id="getStartedDiv">
+        <h4 v-show="!getStarted">Let's get started!</h4>
+        <p v-show="!getStarted">Just scroll down to start...</p>
+        <p v-show="getStarted">Scroll up to start over</p>
       </div>
       <div v-show="getStarted" class="questions">
         <h2>
