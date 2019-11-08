@@ -6,6 +6,13 @@
 a {
   text-decoration: none;
 }
+li {
+  list-style-type: none;
+}
+img {
+  width: 100%;
+  height: 100%;
+}
 body {
   max-height: 100%;
   width: 100%;
@@ -14,10 +21,145 @@ body {
 #app {
   /* overflow: hidden; */
   width: 100%;
-  height: 135%;
+  height: fit-content;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+.intro {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin: 0px;
+  width: 100vw;
+  background-color: white;
+}
+.intro h1 {
+  font-size: 55px;
+  margin: 15px 0 80px 80px;
+}
+.intro h3 {
+  align-self: flex-end;
+  margin-right: 20vw;
+  font-size: 30px;
+  width: 32vw;
+}
+.underline {
+  align-self: flex-end;
+  height: 4px;
+  width: 0;
+  background-color: black;
+  margin-right: 22.4vw;
+  margin-bottom: 100px;
+}
+hr {
+  width: 50vw;
+  align-self: center;
+}
+#processDiv {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  margin-top: 60px;
+  height: 70vh;
+  width: 100%;
+  background-color: white;
+}
+#processDiv p {
+  font-size: 20px;
+  margin-top: 30px;
+}
+#processDiv div {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+}
+.intro img {
+  display: flex;
+  align-self: center;
+  width: 180px;
+  height: 180px;
+}
+#equals,
+#add {
+  width: 70px;
+  height: 70px;
+}
+#hr2 {
+  margin-bottom: 30vh;
+  display: block;
+  background-color: white;
+}
+.infoWrap {
+  height: fit-content;
+  width: 100%;
+  background-image: url("resources/drumstest.jpeg");
+  background-size: cover;
+  z-index: -1;
+  top: 120vh;
+}
+.info {
+  display: flex;
+  justify-content: space-between;
+  height: 70vh;
+  width: 100vw;
+  margin-top: 30vh;
+  padding: 50px;
+}
+.info img {
+  display: flex;
+  align-self: center;
+  margin: 10px;
+  max-width: 450px;
+  max-height: 257px;
+  border-radius: 10px;
+  box-shadow: 5px 10px 4px #444;
+}
+.info p {
+  display: flex;
+  align-self: center;
+  font-size: 28px;
+}
+.info1 {
+  background: linear-gradient(
+    90deg,
+    rgba(246, 240, 238, 1) 0%,
+    rgba(241, 0, 0, 1) 71%,
+    rgba(252, 252, 252, 1) 94%
+  );
+  padding-top: 160px;
+}
+.info2 {
+  display: flex;
+  flex-direction: row-reverse;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 16%,
+    rgba(166, 135, 26, 1) 100%
+  );
+  margin-top: 30vh;
+}
+.info2 p {
+  margin-left: 30px;
+  padding: 10px;
+}
+.info3 {
+  margin-top: 30vh;
+  background: linear-gradient(
+    90deg,
+    rgba(246, 240, 238, 1) 0%,
+    rgba(68, 33, 89, 1) 81%
+  );
+}
+#keepScrolling {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  height: 30vh;
+  background-color: white;
+  border: 1px solid red;
 }
 .header {
   display: flex;
@@ -28,7 +170,8 @@ body {
   height: 25vh;
   font-size: 25px;
   color: black;
-  position: fixed;
+  /* position: fixed; */
+  /* top: 10vh; */
   width: 100%;
   z-index: 2;
   border-bottom: 0.5px solid lightgrey;
@@ -53,7 +196,7 @@ body {
 #notStartedWrap {
   background-color: darkgrey;
   position: absolute;
-  top: 25vh;
+  top: 545vh;
   left: 0;
   height: 100vh;
   width: 100vw;
@@ -65,7 +208,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  /* position: absolute; */
   top: 45vh;
   left: 40%;
   z-index: 1000;
@@ -76,8 +219,9 @@ body {
   border: 2px solid aquamarine;
   border-radius: 10px;
 }
-li {
-  list-style-type: none;
+#getStartedDiv p:nth-child(3) {
+  padding: 8px;
+  text-align: center;
 }
 .questions {
   position: absolute;
@@ -103,38 +247,9 @@ li {
   justify-content: space-around;
   width: 100%;
   height: 100%;
-  /* border: 1px solid blue; */
 }
 .images div {
   max-width: 130px;
   height: 115px;
   margin: 5px;
-  /* filter: blur(1px); */
-  /* border: 1px solid red; */
-}
-img:hover {
-  /* filter: brightness(1.4); */
-  /* filter: blur(0); */
-  transition-duration: 0.5s;
-  cursor: pointer;
-  border-radius: 15px;
-}
-img {
-  animation-name: floatins;
-  animation-iteration-count: infinite;
-  animation-duration: 1s;
-  animation-delay: 1s;
-  /* max-width: fit-content;
-  max-height: fit-content; */
-  width: 100%;
-  height: 100%;
-  /* border: 2px solid blue; */
-}
-@keyframes floatin {
-  0% {
-    transform: translateX(-2px);
-  }
-  100% {
-    transform: translateX(2px);
-  }
 }

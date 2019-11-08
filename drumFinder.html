@@ -10,9 +10,61 @@
   </header>
   <body>
     <div id="app">
+      <div class="intro">
+        <h1>Welcome to <span>DrumFinder 1.0</span></h1>
+        <h3>Let us find the perfect kit for you</h3>
+        <div class="underline"></div>
+        <hr />
+        <div id="processDiv">
+          <div>
+            <img src="resources/Icons/thinking.svg" alt="user input" />
+            <p>Answer some quickies</p>
+          </div>
+          <img id="add" src="resources/Icons/add.svg" alt="user input" />
+          <div>
+            <img src="resources/Icons/worker.svg" alt="process the input" />
+            <p>Let our workers analyze</p>
+          </div>
+          <img
+            id="equals"
+            src="resources/Icons/equal.svg"
+            alt="generat a drum set"
+          />
+          <div>
+            <img src="resources/Icons/drum.svg" alt="generat a drum set" />
+            <p>Custom kit for you!</p>
+          </div>
+        </div>
+        <hr id="hr2" />
+      </div>
+      <div class="infoWrap">
+        <!-- <p>info wrap</p> -->
+
+        <div class="info1 info">
+          <p>
+            Below, we will ask a few different questions to help get a feel for
+            your drumming needs.
+          </p>
+          <img src="resources/ds2.jpg" alt="man drumming in a red room" />
+        </div>
+        <div class="info2 info">
+          <p>
+            Based on your answers we will calculate the best kit that would best
+            fit your style.
+          </p>
+          <img src="resources/ds3.jpg" alt="man drumming in a concert venue" />
+        </div>
+        <div class="info3 info">
+          <p>
+            There are only a few questions so its quick.
+          </p>
+          <img src="resources/ds1.jpg" alt="puppet suit playing drums" />
+        </div>
+      </div>
+      <p id="keepScrolling">Keep scrolling to access the DrumFinder app..</p>
       <div class="header">
         <p>Created by: <a href="#"> Jonathan Cooper</a></p>
-        <h3>What kind of drum set can we find you?</h3>
+        <h3>Which drum kit best suits you?</h3>
       </div>
       <div id="notStartedWrap"></div>
       <div id="getStartedDiv">
@@ -27,8 +79,9 @@
         <div class="answers">
           <button
             v-for="answer in questions[order].a"
-            @click="fade(), nextQuestion(), loadArr(), getAns(questions), anyQ(), tally()"
+            @click=" nextQuestion(), getAns(questions), anyQ(), tally()"
           >
+            <!-- , loadArr() fade(), -->
             {{ answer }}
           </button>
         </div>
@@ -37,14 +90,6 @@
         <div v-for="(img, ind) in loadedArr">
           <img class="class" :src="img" alt="" />
         </div>
-        <!-- <div><img class="img1" :src="loadedArr[0]" alt="" /></div>
-        <div><img class="img2" :src="loadedArr[1]" alt="" /></div>
-        <div><img class="img3" :src="loadedArr[2]" alt="" /></div>
-        <div><img class="img4" :src="loadedArr[3]" alt="" /></div>
-        <div><img class="img5" :src="loadedArr[4]" alt="" /></div>
-        <div><img class="img1" :src="loadedArr[5]" alt="" /></div>
-        <div><img class="img2" :src="loadedArr[6]" alt="" /></div>
-        <div><img class="img5" :src="loadedArr[7]" alt="" /></div> -->
       </div>
     </div>
 

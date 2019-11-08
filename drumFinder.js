@@ -217,7 +217,7 @@ let vm = new Vue({
       leavingUp.play();
       loader.reverse();
       questionsIn.reverse();
-      console.log("yeet");
+
       img.forEach(image => {
         image.style.animationName = null;
       });
@@ -229,11 +229,11 @@ let vm = new Vue({
     },
     nextQuestion() {
       setTimeout(() => {
-        console.log("im next");
-        if (this.order < this.questions.length - 1) {
-          this.order++;
-        } else {
-          this.nomorequestions = true;
+        if ((this.nomorequestions = false)) {
+          console.log("im next");
+          if (this.order < this.questions.length - 1) {
+            this.order++;
+          }
         }
       }, 2000);
     },
@@ -295,6 +295,13 @@ let vm = new Vue({
 
 // reg js
 
+// create parallax effect
+const wrap = document.querySelector(".infoWrap");
+window.addEventListener("scroll", () => {
+  let offset = window.pageYOffset;
+  wrap.style.backgroundPositionY = offset * 0.2 + "px";
+});
+
 // Timelines
 var hover = new TimelineMax({ paused: true });
 var leaving = new TimelineMax({ paused: true });
@@ -302,6 +309,7 @@ var leavingUp = new TimelineMax({ paused: true });
 var loader = new TimelineMax({ paused: false });
 var questionsIn = new TimelineMax({ paused: false });
 var questionsOut = new TimelineMax({ paused: true });
+const underline = new TimelineMax({ paused: false });
 
 // leaving
 leaving.to(".img1", 0.4, {
@@ -374,11 +382,16 @@ questionsOut.to(".questions", 0.6, {
   opacity: "0",
   ease: Power2.easeIn
 });
+underline.to(".underline", 0.8, {
+  width: "30vw"
+});
 
 // scroll magic
+
 // controllers
-const controllerGameStart = new ScrollMagic.Controller();
-const controlleri = new ScrollMagic.Controller();
+// const controllerGameStart = new ScrollMagic.Controller();
+// const controlleri = new ScrollMagic.Controller();
+// const controllerParallax = new ScrollMagic.Controller();
 
 // tweens
 const tweeni = TweenMax.to(".header", 0.5, {
@@ -387,7 +400,7 @@ const tweeni = TweenMax.to(".header", 0.5, {
   height: "10vh",
   fontSize: "20px"
 });
-const tweenGameStart = TweenMax.to("#getStartedDiv", 0.5, {
+const tweenGameStart = TweenMax.to("#getStartedDiv", 0.3, {
   x: "40vw",
   y: "60vh",
   width: "80px",
@@ -417,14 +430,13 @@ const scenei = new ScrollMagic.Scene({
       ungrey.style.opacity = 0.6;
     }
   })
-  .setTween(tweeni)
-  .addTo(controlleri);
+  .setTween(tweeni);
+// .addTo(controlleri);
 
 const sceneGameStart = new ScrollMagic.Scene({
   triggerElement: "#notStartedWrap",
   triggerHook: "onCenter",
   offset: 250,
   reverse: true
-})
-  .setTween(tweenGameStart)
-  .addTo(controllerGameStart);
+}).setTween(tweenGameStart);
+// .addTo(controllerGameStart);
