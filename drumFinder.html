@@ -11,10 +11,13 @@
   <body>
     <div id="app">
       <div class="intro">
-        <h1>Welcome to <span>DrumFinder 1.0</span></h1>
-        <h3>Let us find the perfect kit for you</h3>
-        <div class="underline"></div>
-        <hr />
+        <div class="introHeaderWrap">
+          <h1>Welcome to <span>DrumFinder 1.0</span></h1>
+          <h3>Let us find the perfect kit for you</h3>
+          <div class="underline"></div>
+          <hr />
+        </div>
+
         <div id="processDiv">
           <div>
             <img src="resources/Icons/thinking.svg" alt="user input" />
@@ -37,9 +40,7 @@
         </div>
         <hr id="hr2" />
       </div>
-      <div class="infoWrap">
-        <!-- <p>info wrap</p> -->
-
+      <div class="parallax">
         <div class="info1 info">
           <p>
             Below, we will ask a few different questions to help get a feel for
@@ -54,6 +55,7 @@
           </p>
           <img src="resources/ds3.jpg" alt="man drumming in a concert venue" />
         </div>
+        <div class="fader" id="fader"></div>
         <div class="info3 info">
           <p>
             There are only a few questions so its quick.
@@ -61,17 +63,28 @@
           <img src="resources/ds1.jpg" alt="puppet suit playing drums" />
         </div>
       </div>
-      <p id="keepScrolling">Keep scrolling to access the DrumFinder app..</p>
-      <div class="header">
+      <div id="keepScrolling" class="fader">
+        <p>
+          Keep scrolling to access the DrumFinder app...
+        </p>
+        <div class="underlineScroll"></div>
+        <p id="first" class="fadeJourney">Lets</p>
+        <p id="second" class="fadeJourney">find</p>
+        <p id="third" class="fadeJourney">out</p>
+        <div id="appHeader">
+          <p id="fourth" class="fadeJourney">Which drum set is best for you?</p>
+        </div>
+      </div>
+      <!-- <div class="header">
         <p>Created by: <a href="#"> Jonathan Cooper</a></p>
         <h3>Which drum kit best suits you?</h3>
-      </div>
-      <div id="notStartedWrap"></div>
+      </div> -->
+      <!-- <div id="notStartedWrap"></div>
       <div id="getStartedDiv">
         <h4 v-show="!getStarted">Let's get started!</h4>
         <p v-show="!getStarted">Just scroll down to start...</p>
         <p v-show="getStarted">Scroll up to start over</p>
-      </div>
+      </div> -->
       <div v-show="getStarted" class="questions">
         <h2>
           {{ questions[order].q }}

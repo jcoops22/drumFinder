@@ -296,9 +296,10 @@ let vm = new Vue({
 // reg js
 
 // create parallax effect
-const wrap = document.querySelector(".infoWrap");
+const wrap = document.querySelector(".parallax");
 window.addEventListener("scroll", () => {
   let offset = window.pageYOffset;
+  let back = wrap.style.backgroundPositionY;
   wrap.style.backgroundPositionY = offset * 0.2 + "px";
 });
 
@@ -388,18 +389,8 @@ underline.to(".underline", 0.8, {
 
 // scroll magic
 
-// controllers
+// App start
 // const controllerGameStart = new ScrollMagic.Controller();
-// const controlleri = new ScrollMagic.Controller();
-// const controllerParallax = new ScrollMagic.Controller();
-
-// tweens
-const tweeni = TweenMax.to(".header", 0.5, {
-  backgroundColor: "black",
-  color: "white",
-  height: "10vh",
-  fontSize: "20px"
-});
 const tweenGameStart = TweenMax.to("#getStartedDiv", 0.3, {
   x: "40vw",
   y: "60vh",
@@ -407,8 +398,22 @@ const tweenGameStart = TweenMax.to("#getStartedDiv", 0.3, {
   height: "80px",
   borderRadius: "50%"
 });
+const sceneGameStart = new ScrollMagic.Scene({
+  triggerElement: "#notStartedWrap",
+  triggerHook: "onCenter",
+  offset: 250,
+  reverse: true
+}).setTween(tweenGameStart);
+// .addTo(controllerGameStart);
 
-// scenes
+// App Start setup
+// const controlleri = new ScrollMagic.Controller();
+const tweeni = TweenMax.to(".header", 0.5, {
+  backgroundColor: "black",
+  color: "white",
+  height: "10vh",
+  fontSize: "20px"
+});
 const scenei = new ScrollMagic.Scene({
   triggerElement: "#notStartedWrap",
   triggerHook: "onCenter",
@@ -433,10 +438,96 @@ const scenei = new ScrollMagic.Scene({
   .setTween(tweeni);
 // .addTo(controlleri);
 
-const sceneGameStart = new ScrollMagic.Scene({
-  triggerElement: "#notStartedWrap",
+// parallax
+const controllerParallax = new ScrollMagic.Controller();
+const tweenParallax = TweenMax.from(".parallax", 1, {
+  opacity: 0
+});
+const sceneParallax = new ScrollMagic.Scene({
+  triggerElement: ".parallax",
+  triggerHook: "onEnter"
+})
+  .setTween(tweenParallax)
+  .addTo(controllerParallax);
+
+// info divs slide in
+const controllerInfo = new ScrollMagic.Controller();
+let info = document.querySelectorAll(".info");
+
+for (let i = 0; i < info.length; i++) {
+  const tweenInfo = TweenMax.from(info[i], 1, {
+    x: -200
+  });
+  const sceneInfo = new ScrollMagic.Scene({
+    triggerElement: info[i],
+    triggerHook: "onEnter"
+  })
+    .setTween(tweenInfo)
+    .addTo(controllerInfo);
+}
+
+// fade to app
+const controllerFade = new ScrollMagic.Controller();
+const fader = document.querySelectorAll(".fader");
+
+for (let i = 0; i < fader.length; i++) {
+  const tweenFade = TweenMax.to(fader[i], 0.7, {
+    backgroundColor: "black"
+  });
+  const sceneFade = new ScrollMagic.Scene({
+    triggerElement: "#keepScrolling",
+    triggerHook: "onCenter",
+    offset: 50,
+    duration: 400
+  })
+    .setTween(tweenFade)
+    .addTo(controllerFade);
+}
+// fade Journey
+const constrollerFadeJourney = new ScrollMagic.Controller();
+const fadep = document.querySelectorAll(".fadeJourney");
+
+for (let i = 0; i < fadep.length; i++) {
+  const tweenFadeJourney = TweenMax.to(fadep[i], 0.5, {
+    color: "teal"
+  });
+  const sceneFadeJourney = new ScrollMagic.Scene({
+    triggerElement: fadep[i],
+    triggerHook: "onCenter",
+    duration: 100
+  })
+    .setTween(tweenFadeJourney)
+    .addTo(constrollerFadeJourney);
+}
+
+const constrollerUnderline = new ScrollMagic.Controller();
+const tweenUnderlineScroll = TweenMax.from(".underlineScroll", 0.6, {
+  width: "0vw"
+});
+const sceneUnderline = new ScrollMagic.Scene({
+  triggerElement: "#keepScrolling",
   triggerHook: "onCenter",
-  offset: 250,
-  reverse: true
-}).setTween(tweenGameStart);
-// .addTo(controllerGameStart);
+  duration: 100
+})
+  .setTween(tweenUnderlineScroll)
+  .addTo(constrollerUnderline);
+
+// build the app landing area
+const controllerLanding = new ScrollMagic.Controller();
+const tweenLanding = TweenMax.to("#fourth", 0.5, {
+  fontSize: "35px",
+  left: "0",
+  color: "white",
+  width: "100vw",
+  backgroundColor: "black",
+  innerText: "DrumFinder",
+  paddingBottom: "20px",
+  justifyContent: "flex-end"
+});
+const sceneLanding = new ScrollMagic.Scene({
+  triggerElement: "#fourth",
+  triggerHook: "onLeave"
+})
+  .setPin("#fourth")
+  .setTween(tweenLanding)
+  .addTo(controllerLanding);
