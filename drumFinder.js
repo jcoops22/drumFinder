@@ -531,3 +531,28 @@ const sceneLanding = new ScrollMagic.Scene({
   .setPin("#fourth")
   .setTween(tweenLanding)
   .addTo(controllerLanding);
+
+// letters slide animation
+const controllerLetters = new ScrollMagic.Controller();
+// const stagger = document.querySelectorAll(".stagger");
+// for (let i = 0; i < stagger.length; i++) {
+const tweenLetters = TweenMax.staggerFromTo(
+  ".stagger",
+  2,
+  { left: 700 },
+  { color: "red", left: 700 },
+  { left: 0, ease: Back.easeOut },
+  { color: "blue", left: 0 },
+  0.15
+);
+const tweenLetter = TweenMax.to(".stagger", 1, {
+  color: "red"
+});
+const sceneLetter = new ScrollMagic.Scene({
+  triggerElement: ".staggerDiv",
+  triggerHook: "onCenter",
+  duration: 150
+})
+  .setTween(tweenLetters)
+  .addTo(controllerLetters);
+// }

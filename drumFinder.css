@@ -175,6 +175,14 @@ hr {
   background-color: white;
   /* border: 1px solid red; */
 }
+.staggerDiv {
+  display: flex;
+  justify-content: center;
+}
+.stagger {
+  margin: 5px;
+  /* left: 0; */
+}
 #keepScrolling p {
   display: flex;
   padding: 30px;
