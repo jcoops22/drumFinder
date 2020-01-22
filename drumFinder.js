@@ -229,7 +229,7 @@ let vm = new Vue({
     },
     nextQuestion() {
       setTimeout(() => {
-        if ((this.nomorequestions = false)) {
+        if (this.nomorequestions == false) {
           console.log("im next");
           if (this.order < this.questions.length - 1) {
             this.order++;
@@ -295,14 +295,6 @@ let vm = new Vue({
 
 // reg js
 
-// create parallax effect
-const wrap = document.querySelector(".parallax");
-window.addEventListener("scroll", () => {
-  let offset = window.pageYOffset;
-  let back = wrap.style.backgroundPositionY;
-  wrap.style.backgroundPositionY = offset * 0.2 + "px";
-});
-
 // Timelines
 var hover = new TimelineMax({ paused: true });
 var leaving = new TimelineMax({ paused: true });
@@ -312,247 +304,55 @@ var questionsIn = new TimelineMax({ paused: false });
 var questionsOut = new TimelineMax({ paused: true });
 const underline = new TimelineMax({ paused: false });
 
-// leaving
-leaving.to(".img1", 0.4, {
-  x: "-130px",
-  opacity: "0",
-  ease: Power1.easeIn
-});
-leaving.to(".img2", 0.7, {
-  x: "-130px",
-  opacity: "0",
-  ease: Power3.easeIn
-});
-leavingUp.to(".img3", 0.8, {
-  y: "-430px",
-  opacity: "0",
-  ease: Power1.easeOut
-});
-leavingUp.to(".img4", 0.3, {
-  y: "-230px",
-  opacity: "0",
-  ease: Power4.easeIn
-});
-leavingUp.to(".img5", 0.2, {
-  y: "-330px",
-  opacity: "0",
-  ease: Power4.easeIn
-});
-
-// loading everything
-loader.from(".img1", 0.6, {
-  x: "400px",
-  opacity: "0",
-  ease: Power1.easeOut
-});
-loader.from(".img2", 0.2, {
-  x: "400px",
-  opacity: "0",
-  ease: Power1.easeOut
-});
-loader.from(".img3", 0.3, {
-  x: "400px",
-  opacity: "0",
-  ease: Power1.easeOut
-});
-loader.from(".img4", 0.2, {
-  x: "400px",
-  opacity: "0",
-  ease: Power1.easeOut
-});
-loader.from(".img5", 0.5, {
-  x: "400px",
-  opacity: "0",
-  ease: Power1.easeOut
-});
-
-// hover
-hover.to(".img1", 0.5, {
-  scale: "1.4"
-});
-
-// questions box
-questionsIn.from(".questions", 0.6, {
-  x: "1000px",
-  opacity: "0",
-  ease: Power2.easeOut
-});
-
-questionsOut.to(".questions", 0.6, {
-  x: "1000px",
-  opacity: "0",
-  ease: Power2.easeIn
-});
 underline.to(".underline", 0.8, {
   width: "30vw"
 });
 
 // scroll magic
 
-// App start
-// const controllerGameStart = new ScrollMagic.Controller();
-const tweenGameStart = TweenMax.to("#getStartedDiv", 0.3, {
-  x: "40vw",
-  y: "60vh",
-  width: "80px",
-  height: "80px",
-  borderRadius: "50%"
-});
-const sceneGameStart = new ScrollMagic.Scene({
-  triggerElement: "#notStartedWrap",
-  triggerHook: "onCenter",
-  offset: 250,
-  reverse: true
-}).setTween(tweenGameStart);
-// .addTo(controllerGameStart);
-
 // App Start setup
 // const controlleri = new ScrollMagic.Controller();
-const tweeni = TweenMax.to(".header", 0.5, {
-  backgroundColor: "black",
-  color: "white",
-  height: "10vh",
-  fontSize: "20px"
-});
-const scenei = new ScrollMagic.Scene({
-  triggerElement: "#notStartedWrap",
-  triggerHook: "onCenter",
-  offset: 250,
-  // duration: 100,
-  reverse: true
-})
-  .on("progress", event => {
-    let ungrey = document.getElementById("notStartedWrap");
-    let body = document.getElementsByTagName("div");
+// const tweeni = TweenMax.to(".header", 0.5, {
+//   backgroundColor: "black",
+//   color: "white",
+//   height: "10vh",
+//   fontSize: "20px"
+// });
+// const scenei = new ScrollMagic.Scene({
+//   triggerElement: "#getStartedDiv",
+//   triggerHook: "onLeave",
+//   offset: 80,
+//   reverse: true
+// })
+//   .on("progress", event => {
+//     if (event.progress === 1) {
+//       vm.getStarted = true;
+//       vm.reset();
+//     } else {
+//       vm.getStarted = false;
+//     }
+//   })
+//   .setTween(tweeni)
+//   .addTo(controlleri);
 
-    if (event.progress === 1) {
-      vm.getStarted = true;
-      ungrey.style.opacity = 0;
-      body[0].style.overflow = "hidden";
-      vm.reset();
-    } else {
-      vm.getStarted = false;
-      ungrey.style.opacity = 0.6;
-    }
-  })
-  .setTween(tweeni);
-// .addTo(controlleri);
-
-// parallax
-const controllerParallax = new ScrollMagic.Controller();
-const tweenParallax = TweenMax.from(".parallax", 1, {
+// show images div
+const controllerImagesDiv = new ScrollMagic.Controller();
+const tweenImagesDiv = TweenMax.from(".images", 1, {
   opacity: 0
 });
-const sceneParallax = new ScrollMagic.Scene({
-  triggerElement: ".parallax",
-  triggerHook: "onEnter"
-})
-  .setTween(tweenParallax)
-  .addTo(controllerParallax);
-
-// info divs slide in
-const controllerInfo = new ScrollMagic.Controller();
-let info = document.querySelectorAll(".info");
-
-for (let i = 0; i < info.length; i++) {
-  const tweenInfo = TweenMax.from(info[i], 1, {
-    x: -200
-  });
-  const sceneInfo = new ScrollMagic.Scene({
-    triggerElement: info[i],
-    triggerHook: "onEnter"
-  })
-    .setTween(tweenInfo)
-    .addTo(controllerInfo);
-}
-
-// fade to app
-const controllerFade = new ScrollMagic.Controller();
-const fader = document.querySelectorAll(".fader");
-
-for (let i = 0; i < fader.length; i++) {
-  const tweenFade = TweenMax.to(fader[i], 0.7, {
-    backgroundColor: "black"
-  });
-  const sceneFade = new ScrollMagic.Scene({
-    triggerElement: "#keepScrolling",
-    triggerHook: "onCenter",
-    offset: 50,
-    duration: 400
-  })
-    .setTween(tweenFade)
-    .addTo(controllerFade);
-}
-// fade Journey
-const constrollerFadeJourney = new ScrollMagic.Controller();
-const fadep = document.querySelectorAll(".fadeJourney");
-
-for (let i = 0; i < fadep.length; i++) {
-  const tweenFadeJourney = TweenMax.to(fadep[i], 0.5, {
-    color: "teal"
-  });
-  const sceneFadeJourney = new ScrollMagic.Scene({
-    triggerElement: fadep[i],
-    triggerHook: "onCenter",
-    duration: 100
-  })
-    .setTween(tweenFadeJourney)
-    .addTo(constrollerFadeJourney);
-}
-
-const constrollerUnderline = new ScrollMagic.Controller();
-const tweenUnderlineScroll = TweenMax.from(".underlineScroll", 0.6, {
-  width: "0vw"
-});
-const sceneUnderline = new ScrollMagic.Scene({
-  triggerElement: "#keepScrolling",
+const sceneImagesDiv = new ScrollMagic.Scene({
+  triggerElement: ".images",
   triggerHook: "onCenter",
-  duration: 100
+  offset: "10vh"
 })
-  .setTween(tweenUnderlineScroll)
-  .addTo(constrollerUnderline);
-
-// build the app landing area
-const controllerLanding = new ScrollMagic.Controller();
-const tweenLanding = TweenMax.to("#fourth", 0.5, {
-  fontSize: "35px",
-  left: "0",
-  color: "white",
-  width: "100vw",
-  backgroundColor: "black",
-  innerText: "DrumFinder",
-  paddingBottom: "20px",
-  justifyContent: "flex-end"
-});
-const sceneLanding = new ScrollMagic.Scene({
-  triggerElement: "#fourth",
-  triggerHook: "onLeave"
-})
-  .setPin("#fourth")
-  .setTween(tweenLanding)
-  .addTo(controllerLanding);
-
-// letters slide animation
-const controllerLetters = new ScrollMagic.Controller();
-// const stagger = document.querySelectorAll(".stagger");
-// for (let i = 0; i < stagger.length; i++) {
-const tweenLetters = TweenMax.staggerFromTo(
-  ".stagger",
-  2,
-  { left: 700 },
-  { color: "red", left: 700 },
-  { left: 0, ease: Back.easeOut },
-  { color: "blue", left: 0 },
-  0.15
-);
-const tweenLetter = TweenMax.to(".stagger", 1, {
-  color: "red"
-});
-const sceneLetter = new ScrollMagic.Scene({
-  triggerElement: ".staggerDiv",
-  triggerHook: "onCenter",
-  duration: 150
-})
-  .setTween(tweenLetters)
-  .addTo(controllerLetters);
-// }
+  .on("progress", event => {
+    if (event.progress === 1) {
+      vm.getStarted = true;
+      vm.reset();
+      window.scrollTo(0, 10000000);
+    } else {
+      vm.getStarted = false;
+    }
+  })
+  .setTween(tweenImagesDiv)
+  .addTo(controllerImagesDiv);

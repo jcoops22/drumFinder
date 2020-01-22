@@ -7,6 +7,9 @@
     <script src="frameworks/minified/TimelineMax.min.js"></script>
     <script src="frameworks/minified/plugins/CSSPlugin.min.js"></script>
     <script src="vue/vue.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   </header>
   <body>
     <div id="app">
@@ -15,10 +18,9 @@
           <h1>Welcome to <span>DrumFinder 1.0</span></h1>
           <h3>Let us find the perfect kit for you</h3>
           <div class="underline"></div>
-          <hr />
         </div>
 
-        <div id="processDiv">
+        <section id="processDiv">
           <div>
             <img src="resources/Icons/thinking.svg" alt="user input" />
             <p>Answer some quickies</p>
@@ -34,64 +36,62 @@
             alt="generat a drum set"
           />
           <div>
-            <img src="resources/Icons/drum.svg" alt="generat a drum set" />
-            <p>Custom kit for you!</p>
+            <img src="resources/Icons/drum.svg" alt="generate a drum set" />
+            <p>Hand picked kit for you!</p>
           </div>
-        </div>
-        <hr id="hr2" />
+        </section>
       </div>
-      <div class="parallax">
-        <div class="info1 info">
-          <p>
-            Below, we will ask a few different questions to help get a feel for
-            your drumming needs.
-          </p>
-          <img src="resources/ds2.jpg" alt="man drumming in a red room" />
+      <section class="subIntro">
+        <h4>Things to consider</h4>
+        <div class="card">
+          <h5>Sound</h5>
+          <ul>
+            <li>
+              What kind of sounds do you appreciate in a kit?
+            </li>
+            <li>
+              Do you like punchy bass drums or snappy snares?
+            </li>
+            <li>Deep tones or crackling clangs?</li>
+          </ul>
         </div>
-        <div class="info2 info">
-          <p>
-            Based on your answers we will calculate the best kit that would best
-            fit your style.
-          </p>
-          <img src="resources/ds3.jpg" alt="man drumming in a concert venue" />
+        <div class="card">
+          <h5>Purpose</h5>
+          <ul>
+            <li>What will you be using your kit for?</li>
+            <li>Playing gigs in cozy jazz bar?</li>
+            <li>Rocking out on stage at a large venue?</li>
+            <li>Just setting up a kit at home?</li>
+          </ul>
         </div>
-        <div class="fader" id="fader"></div>
-        <div class="info3 info">
-          <p>
-            There are only a few questions so its quick.
-          </p>
-          <img src="resources/ds1.jpg" alt="puppet suit playing drums" />
+        <div class="card">
+          <h5>Space/Environment</h5>
+          <ul>
+            <li>
+              Where will you setup?
+            </li>
+            <li>Are you in an apartment and hate your neighbors?</li>
+            <li>
+              Do you have a designated area with plenty of arm flailing space?
+            </li>
+            <li>
+              Are your quarters a little tighter than you'd like but you still
+              want to jam?
+            </li>
+          </ul>
         </div>
-      </div>
-      <div id="keepScrolling" class="fader">
-        <div class="staggerDiv">
-          <div class="stagger">Keep</div>
-          <div class="stagger">scrolling</div>
-          <div class="stagger">to</div>
-          <div class="stagger">access</div>
-          <div class="stagger">the</div>
-          <div class="stagger">DrumFinder</div>
-          <div class="stagger">app...</div>
+      </section>
+      <section class="getStarted">
+        <div id="getStartedDiv">
+          <h4 v-show="!getStarted">Ready to get started?</h4>
+          <p v-show="!getStarted">Just keep scrolling...</p>
         </div>
-        <div class="underlineScroll"></div>
-        <p id="first" class="fadeJourney">Lets</p>
-        <p id="second" class="fadeJourney">find</p>
-        <p id="third" class="fadeJourney">out</p>
-        <div id="appHeader">
-          <p id="fourth" class="fadeJourney">Which drum set is best for you?</p>
-        </div>
-      </div>
-      <!-- <div class="header">
-        <p>Created by: <a href="#"> Jonathan Cooper</a></p>
-        <h3>Which drum kit best suits you?</h3>
-      </div> -->
-      <!-- <div id="notStartedWrap"></div>
-      <div id="getStartedDiv">
-        <h4 v-show="!getStarted">Let's get started!</h4>
-        <p v-show="!getStarted">Just scroll down to start...</p>
-        <p v-show="getStarted">Scroll up to start over</p>
-      </div> -->
-      <div v-show="getStarted" class="questions">
+        <nav class="getStartedNav">
+          <p v-show="getStarted">Running...</p>
+          <p v-show="getStarted">DrumFinder</p>
+        </nav>
+      </section>
+      <!-- <div v-show="getStarted" class="questions">
         <h2>
           {{ questions[order].q }}
         </h2>
@@ -100,14 +100,14 @@
             v-for="answer in questions[order].a"
             @click=" nextQuestion(), getAns(questions), anyQ(), tally()"
           >
-            <!-- , loadArr() fade(), -->
-            {{ answer }}
+            loadArr() fade(), {{ answer }}
           </button>
         </div>
-      </div>
+      </div> -->
       <div class="images">
+        <p id="scrollUp" v-show="getStarted">Scroll up to reset or exit</p>
         <div v-for="(img, ind) in loadedArr">
-          <img class="class" :src="img" alt="" />
+          <img class="class" :src="img" alt="random drum sets" />
         </div>
       </div>
     </div>
