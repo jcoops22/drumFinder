@@ -171,8 +171,8 @@ let vm = new Vue({
       "resources/sonar/sd7.jpg",
       "resources/sonar/sd8.png",
       "resources/sonar/sd9.webp",
-      "resources/sonar/sd10.jpg",
-      "resources/sonar/sd11.jpg"
+      "resources/sonar/sd10.jpg"
+      // "resources/sonar/sd11.jpg"
     ],
     pearl: [
       "resources/pearl/pd1.jpg",
