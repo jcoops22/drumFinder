@@ -141,8 +141,7 @@ let vm = new Vue({
       "resources/dw/dw7.jpg",
       "resources/dw/dw8.png",
       "resources/dw/dw9.jpg",
-      "resources/dw/dw10.jpg",
-      "resources/dw/dw11.jpg"
+      "resources/dw/dw10.jpg"
     ],
     ocdrum: [
       "resources/ocdrum/oc1.jpg",
@@ -180,14 +179,10 @@ let vm = new Vue({
       "resources/pearl/pd2.jpg",
       "resources/pearl/pd3.jpg",
       "resources/pearl/pd4.jpg",
-      "resources/pearl/pd5.jpeg",
+      "resources/pearl/pd5.jpg",
       "resources/pearl/pd6.jpg",
       "resources/pearl/pd7.jpg",
-      "resources/pearl/pd8.jpeg",
-      "resources/pearl/pd9.jpg",
-      "resources/pearl/pd10.jpeg",
-      "resources/pearl/pd11.jpeg",
-      "resources/pearl/pd12.jpg"
+      "resources/pearl/pd8.jpg"
     ]
   },
   computed: {
@@ -338,7 +333,8 @@ underline.to(".underline", 0.8, {
 // show images div
 const controllerImagesDiv = new ScrollMagic.Controller();
 const tweenImagesDiv = TweenMax.from(".images", 1, {
-  opacity: 0
+  opacity: 0,
+  scrollTop: "250"
 });
 const sceneImagesDiv = new ScrollMagic.Scene({
   triggerElement: ".images",

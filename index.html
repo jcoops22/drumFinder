@@ -91,7 +91,7 @@
           <p v-show="getStarted">DrumFinder</p>
         </nav>
       </section>
-      <!-- <div v-show="getStarted" class="questions">
+      <div v-show="getStarted" class="questions">
         <h2>
           {{ questions[order].q }}
         </h2>
@@ -100,10 +100,10 @@
             v-for="answer in questions[order].a"
             @click=" nextQuestion(), getAns(questions), anyQ(), tally()"
           >
-            loadArr() fade(), {{ answer }}
+            {{ answer }}
           </button>
         </div>
-      </div> -->
+      </div>
       <div class="images">
         <p id="scrollUp" v-show="getStarted">Scroll up to reset or exit</p>
         <div v-for="(img, ind) in loadedArr">
