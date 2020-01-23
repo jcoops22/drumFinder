@@ -200,8 +200,7 @@ let vm = new Vue({
         this.ddrum,
         this.dw
       );
-
-      return this.shuffle(combo);
+      return this.shuffle(combo).slice(0, 15);
     }
   },
   methods: {
@@ -369,7 +368,7 @@ const tweenBegin = TweenMax.from("#letsBegin", 0.4, {
 const screneBegin = new ScrollMagic.Scene({
   triggerElement: "#letsBegin",
   triggerHook: "on Enter",
-  offset: -100
+  offset: -180
 })
   .setTween(tweenBegin)
   .addTo(controllerBegin);
@@ -377,8 +376,8 @@ const screneBegin = new ScrollMagic.Scene({
 // show images div
 const controllerImagesDiv = new ScrollMagic.Controller();
 const tweenImagesDiv = TweenMax.from(".images", 1, {
-  opacity: 0,
-  scrollTop: "250"
+  opacity: 0
+  // scrollTop: "250"
 });
 const sceneImagesDiv = new ScrollMagic.Scene({
   triggerElement: "#letsBegin",
@@ -388,7 +387,7 @@ const sceneImagesDiv = new ScrollMagic.Scene({
   .on("progress", event => {
     if (event.progress === 1) {
       vm.getStarted = true;
-      window.scrollTo(0, 10000000);
+      window.scrollTo(0, 100000000);
     } else {
       vm.getStarted = false;
     }
