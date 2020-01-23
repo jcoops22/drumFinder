@@ -342,6 +342,38 @@ underline.to(".underline", 0.8, {
 //   .setTween(tweeni)
 //   .addTo(controlleri);
 
+// show snare drums on the way to the app
+const controllerSnares = new ScrollMagic.Controller();
+let snareArrows = document.querySelectorAll(".snareArrows img");
+
+for (var i = 0; i < snareArrows.length; i++) {
+  const tweenSnares = TweenMax.from(snareArrows[i], 0.5, {
+    opacity: 0
+  });
+  const snareScene = new ScrollMagic.Scene({
+    triggerElement: snareArrows[i],
+    triggerHook: "onCenter",
+    reverse: true,
+    offset: -150
+  })
+    .setTween(tweenSnares)
+    .addTo(controllerSnares);
+}
+
+// lets begin animation
+const controllerBegin = new ScrollMagic.Controller();
+const tweenBegin = TweenMax.from("#letsBegin", 0.4, {
+  x: -200,
+  opacity: 0
+});
+const screneBegin = new ScrollMagic.Scene({
+  triggerElement: "#letsBegin",
+  triggerHook: "on Enter",
+  offset: -100
+})
+  .setTween(tweenBegin)
+  .addTo(controllerBegin);
+
 // show images div
 const controllerImagesDiv = new ScrollMagic.Controller();
 const tweenImagesDiv = TweenMax.from(".images", 1, {
