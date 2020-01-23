@@ -224,11 +224,16 @@ let vm = new Vue({
     },
     nextQuestion() {
       setTimeout(() => {
-        if (this.nomorequestions == false) {
+        if (this.order < this.questions.length - 1) {
           console.log("im next");
-          if (this.order < this.questions.length - 1) {
-            this.order++;
-          }
+          console.log(this.order);
+          console.log(this.questions.length - 1);
+          console.log(this.order < this.questions.length - 1);
+          this.order++;
+        } else {
+          console.log("no more questions");
+          this.getStarted = false;
+          this.nomorequestions = true;
         }
       }, 2000);
     },
@@ -273,6 +278,7 @@ let vm = new Vue({
       let most = tally.reduce((acc, nxt) => {
         return acc > nxt ? acc : nxt;
       });
+      console.log("the tally function returned : " + most + " as the most");
     },
     anyQ() {
       if (this.nomorequestions) {
@@ -283,6 +289,12 @@ let vm = new Vue({
       this.drumTable.forEach(brand => {
         brand.points = 0;
         this.order = 0;
+        let value = document.querySelector("#letsBegin");
+        console.log(value);
+        let scrollOptions = {
+          top: value
+        };
+        window.scrollTo(scrollOptions);
       });
     }
   }
@@ -337,14 +349,13 @@ const tweenImagesDiv = TweenMax.from(".images", 1, {
   scrollTop: "250"
 });
 const sceneImagesDiv = new ScrollMagic.Scene({
-  triggerElement: ".images",
-  triggerHook: "onCenter",
-  offset: "10vh"
+  triggerElement: "#letsBegin",
+  triggerHook: "onLeave",
+  offset: -80
 })
   .on("progress", event => {
     if (event.progress === 1) {
       vm.getStarted = true;
-      vm.reset();
       window.scrollTo(0, 10000000);
     } else {
       vm.getStarted = false;

@@ -81,10 +81,34 @@
           </ul>
         </div>
       </section>
-      <section class="getStarted">
+      <section class="getStartedSection">
         <div id="getStartedDiv">
-          <h4 v-show="!getStarted">Ready to get started?</h4>
-          <p v-show="!getStarted">Just keep scrolling...</p>
+          <div class="ready">
+            <h4 v-show="!getStarted">Ready to get started?</h4>
+            <img
+              id="drumsticks"
+              src="./resources/Icons/drumsticks.svg"
+              alt="drumsticks"
+            />
+          </div>
+          <div class="snareArrows">
+            <img
+              id="firstSnare"
+              src="./resources/Icons/snare.svg"
+              alt="snare drums"
+            />
+            <img
+              id="secondSnare"
+              src="./resources/Icons/snare.svg"
+              alt="snare drums"
+            />
+            <img
+              id="thirdSnare"
+              src="./resources/Icons/snare.svg"
+              alt="snare drums"
+            />
+          </div>
+          <h3 id="letsBegin">Let's Begin!</h3>
         </div>
         <nav class="getStartedNav">
           <p v-show="getStarted">Running...</p>
@@ -98,17 +122,20 @@
         <div class="answers">
           <button
             v-for="answer in questions[order].a"
-            @click=" nextQuestion(), getAns(questions), anyQ(), tally()"
+            @click=" nextQuestion(), getAns(questions), tally()"
           >
             {{ answer }}
           </button>
         </div>
       </div>
+
       <div class="images">
-        <p id="scrollUp" v-show="getStarted">Scroll up to reset or exit</p>
         <div v-for="(img, ind) in loadedArr">
           <img class="class" :src="img" alt="random drum sets" />
         </div>
+        <p id="scrollUp" @click="reset()" v-show="getStarted">
+          Scroll up to reset or exit
+        </p>
       </div>
     </div>
 
