@@ -22,6 +22,7 @@ html {
   justify-content: center;
 }
 .intro {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -43,6 +44,12 @@ html {
   width: 100%;
   margin-top: 32%;
   text-align: center;
+}
+.underline {
+  align-self: center;
+  height: 3px;
+  width: 100%;
+  background: black;
 }
 #processDiv {
   display: flex;
@@ -68,8 +75,11 @@ html {
   width: 40px;
 }
 .subIntro {
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* flex-direction: column; */
   align-items: center;
   padding: 30px 5px;
   margin-bottom: 100px;
@@ -78,13 +88,15 @@ html {
   text-align: center;
   font-size: 23px;
   margin-bottom: 30px;
+  flex-basis: 100%;
 }
 .card {
-  width: 80%;
+  width: 100%;
   border: 1px solid #555;
   box-shadow: 3px 4px 10px;
   margin: 20px 10px;
   padding: 8px;
+  flex-basis: 30%;
 }
 .card h5 {
   font-size: 18px;
@@ -98,6 +110,12 @@ html {
   margin: 3%;
   list-style-image: url("./resources/Icons/drum.svg");
 }
+.getStartedSection {
+  position: relative;
+  width: 100%;
+  height: 250vh;
+  margin-bottom: -15vh;
+}
 #getStartedDiv {
   display: flex;
   flex-direction: column;
@@ -105,7 +123,7 @@ html {
   position: relative;
   margin: 40px 10px;
   padding: 8px;
-  width: 80%;
+  width: 100%;
   height: 50vh;
   transition-duration: 1s;
 }
@@ -116,18 +134,14 @@ html {
 #getStartedDiv p {
   margin: 10px;
 }
-.getStartedSection {
-  width: 100%;
-  height: 250vh;
-  margin-bottom: -15vh;
-}
 .ready {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 #drumsticks {
+  margin-left: 30px;
   width: 30px;
   animation: jiggle;
   animation-duration: 4s;
@@ -187,6 +201,7 @@ html {
   width: 120px;
 }
 #letsBegin {
+  width: 100%;
   text-align: center;
   position: relative;
   margin-top: 30vh;
@@ -194,37 +209,23 @@ html {
 .getStartedNav {
   position: relative;
   top: 180vh;
+  padding: 10px;
   width: 100%;
   display: flex;
+  flex-basis: 100%;
   justify-content: space-between;
+  background-color: #aaa;
+  z-index: 1000;
 }
-.images {
-  width: 100%;
-  position: relative;
-  bottom: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  height: 90vh;
-  overflow-y: scroll;
-  overflow: hidden;
+#drumSet {
+  width: 25px;
+  margin-left: 10px;
 }
-.images::-webkit-scrollbar {
-  display: none;
-}
-.images div {
-  max-width: 33%;
-}
-#scrollUp {
-  position: absolute;
-  top: 86vh;
-  padding: 15px 0;
-  background-color: #fff;
-  width: 100%;
-  text-align: center;
+#navLabel {
+  margin-right: 15px;
 }
 .questions {
-  width: 80%;
+  max-width: 80%;
   position: relative;
   top: 50vh;
   z-index: 1000;
@@ -238,4 +239,85 @@ html {
 .answers {
   display: flex;
   justify-content: space-around;
+}
+.images {
+  height: 90vh;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  margin-bottom: 30px;
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  overflow-y: scroll;
+  overflow: hidden;
+}
+.images::-webkit-scrollbar {
+  display: none;
+}
+.images div {
+  max-width: 25%;
+}
+#scrollUp {
+  position: absolute;
+  top: 86vh;
+  padding: 10px 0;
+  background-color: #fff;
+  width: 100%;
+  text-align: center;
+}
+@media only screen and (max-width: 350px) {
+  .underline {
+    display: none;
+  }
+  .images {
+    margin-bottom: 0;
+  }
+  #scrollUp {
+    padding-top: 2px;
+  }
+}
+
+@media only screen and (min-width: 351px) {
+  .underline {
+    max-width: 85%;
+  }
+}
+@media only screen and (min-width: 420px) {
+  .underline {
+    max-width: 70%;
+  }
+}
+@media only screen and (min-width: 500px) {
+  .underline {
+    max-width: 60%;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .underline {
+    max-width: 50%;
+  }
+  .intro h3 {
+    margin-top: 20%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .underline {
+    max-width: 40%;
+  }
+}
+@media only screen and (min-width: 900px) {
+  .intro h3 {
+    margin-top: 10%;
+  }
+  .underline {
+    max-width: 30%;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .underline {
+    max-width: 30%;
+  }
 }

@@ -200,7 +200,7 @@ let vm = new Vue({
         this.ddrum,
         this.dw
       );
-      return this.shuffle(combo).slice(0, 15);
+      return this.shuffle(combo).slice(0, 16);
     }
   },
   methods: {
@@ -310,9 +310,16 @@ var questionsIn = new TimelineMax({ paused: false });
 var questionsOut = new TimelineMax({ paused: true });
 const underline = new TimelineMax({ paused: false });
 
-underline.to(".underline", 0.8, {
-  width: "30vw"
-});
+underline.fromTo(
+  ".underline",
+  1.8,
+  {
+    width: 0
+  },
+  {
+    width: "100%"
+  }
+);
 
 // scroll magic
 

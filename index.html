@@ -115,9 +115,13 @@
           </div>
           <h3 id="letsBegin">Let's Begin!</h3>
         </div>
-        <nav class="getStartedNav">
-          <p v-show="getStarted">Running...</p>
-          <p v-show="getStarted">DrumFinder</p>
+        <nav v-show="getStarted" class="getStartedNav">
+          <img
+            id="drumSet"
+            v-show="getStarted"
+            src="./resources/Icons/drumSet.svg"
+          />
+          <p id="navLabel" v-show="getStarted">DrumFinder</p>
         </nav>
       </section>
       <div v-show="getStarted" class="questions">
@@ -136,7 +140,7 @@
 
       <div class="images">
         <div v-for="(img, ind) in loadedArr">
-          <img class="class" :src="img" alt="random drum sets" />
+          <img class="randomDrums" :src="img" alt="random drum sets" />
         </div>
         <p id="scrollUp" @click="reset()" v-show="getStarted">
           Scroll up to reset or exit
