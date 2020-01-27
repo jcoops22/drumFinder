@@ -284,16 +284,13 @@ let vm = new Vue({
         console.log("no more questions at this time");
       }
     },
+    scrollUp() {
+      window.scrollTo(0, 0);
+    },
     reset() {
       this.drumTable.forEach(brand => {
         brand.points = 0;
         this.order = 0;
-        let value = document.querySelector("#letsBegin");
-        console.log(value);
-        let scrollOptions = {
-          top: value
-        };
-        window.scrollTo(scrollOptions);
       });
     }
   }
@@ -375,7 +372,7 @@ const tweenBegin = TweenMax.from("#letsBegin", 0.4, {
 const screneBegin = new ScrollMagic.Scene({
   triggerElement: "#letsBegin",
   triggerHook: "on Enter",
-  offset: -180
+  offset: -250
 })
   .setTween(tweenBegin)
   .addTo(controllerBegin);
@@ -384,7 +381,6 @@ const screneBegin = new ScrollMagic.Scene({
 const controllerImagesDiv = new ScrollMagic.Controller();
 const tweenImagesDiv = TweenMax.from(".images", 1, {
   opacity: 0
-  // scrollTop: "250"
 });
 const sceneImagesDiv = new ScrollMagic.Scene({
   triggerElement: "#letsBegin",
@@ -394,9 +390,12 @@ const sceneImagesDiv = new ScrollMagic.Scene({
   .on("progress", event => {
     if (event.progress === 1) {
       vm.getStarted = true;
-      window.scrollTo(0, 100000000);
+      setTimeout(() => {
+        window.scrollTo(0, 999999);
+      }, 1);
     } else {
       vm.getStarted = false;
+      vm.reset();
     }
   })
   .setTween(tweenImagesDiv)

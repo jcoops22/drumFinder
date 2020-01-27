@@ -55,7 +55,6 @@ html {
   display: flex;
   justify-content: space-evenly;
   align-content: center;
-  /* margin-top: 60px; */
   height: 60vh;
   width: 100%;
   background-color: white;
@@ -79,7 +78,7 @@ html {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* flex-direction: column; */
+  flex-direction: column;
   align-items: center;
   padding: 30px 5px;
   margin-bottom: 100px;
@@ -88,15 +87,13 @@ html {
   text-align: center;
   font-size: 23px;
   margin-bottom: 30px;
-  flex-basis: 100%;
 }
 .card {
   width: 100%;
   border: 1px solid #555;
   box-shadow: 3px 4px 10px;
-  margin: 20px 10px;
+  margin: 20px 0px;
   padding: 8px;
-  flex-basis: 30%;
 }
 .card h5 {
   font-size: 18px;
@@ -121,7 +118,7 @@ html {
   flex-direction: column;
   align-items: center;
   position: relative;
-  margin: 40px 10px;
+  margin: 40px 0px;
   padding: 8px;
   width: 100%;
   height: 50vh;
@@ -135,7 +132,7 @@ html {
   margin: 10px;
 }
 .ready {
-  width: 100%;
+  max-width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -189,26 +186,27 @@ html {
   animation-iteration-count: infinite;
 }
 #firstSnare {
-  width: 50px;
-}
-#secondSnare {
   width: 70px;
 }
-#thirdSnare {
+#secondSnare {
   width: 90px;
 }
+#thirdSnare {
+  width: 110px;
+}
 #fourthSnare {
-  width: 120px;
+  width: 150px;
 }
 #letsBegin {
   width: 100%;
   text-align: center;
   position: relative;
-  margin-top: 30vh;
+  top: 30vh;
+  /* margin-top: 30vh; */
 }
 .getStartedNav {
   position: relative;
-  top: 180vh;
+  top: 178vh;
   padding: 10px;
   width: 100%;
   display: flex;
@@ -218,23 +216,43 @@ html {
   z-index: 1000;
 }
 #drumSet {
-  width: 25px;
+  max-width: 50px;
+  width: 8%;
   margin-left: 10px;
 }
 #navLabel {
   margin-right: 15px;
 }
 .questions {
-  max-width: 80%;
+  max-width: 100%;
+  text-align: center;
   position: relative;
-  top: 50vh;
+  top: 55vh;
   z-index: 1000;
-  background-color: antiquewhite;
+  color: #fff;
+  background-color: #000;
   border: 3px solid teal;
+  border-radius: 13px;
   display: flex;
   justify-content: center;
   align-items: stretch;
   flex-direction: column;
+}
+.questions h2 {
+  margin-bottom: 3%;
+  /* padding: 13px; */
+}
+.questions button {
+  padding: 3px;
+  margin-bottom: 3px;
+  border-radius: 13px;
+  border: none;
+  transition-duration: 0.2s;
+  outline: none;
+}
+.questions button:hover {
+  background-color: teal;
+  border-color: black;
 }
 .answers {
   display: flex;
@@ -284,10 +302,21 @@ html {
   .underline {
     max-width: 85%;
   }
+  .getStartedNav {
+    top: 182.5vh;
+  }
+}
+@media only screen and (min-width: 375px) {
+  .questions {
+    top: 52.4vh;
+  }
 }
 @media only screen and (min-width: 420px) {
   .underline {
     max-width: 70%;
+  }
+  .questions {
+    top: 50vh;
   }
 }
 @media only screen and (min-width: 500px) {
@@ -302,10 +331,34 @@ html {
   .intro h3 {
     margin-top: 20%;
   }
+  .getStartedNav {
+    top: 178vh;
+  }
 }
 @media only screen and (min-width: 768px) {
   .underline {
     max-width: 40%;
+  }
+  .introHeaderWrap h1 {
+    margin-top: 5vh;
+  }
+  .introHeaderWrap h3 {
+    margin-top: 20vh;
+  }
+  #processDiv {
+    margin-top: 25vh;
+  }
+  .subIntro {
+    margin-top: 13vh;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .subIntro h4 {
+    flex-basis: 100%;
+  }
+  .subIntro .card {
+    width: 40%;
+    height: 33vh;
   }
 }
 @media only screen and (min-width: 900px) {
@@ -320,4 +373,13 @@ html {
   .underline {
     max-width: 30%;
   }
+  /* .introHeaderWrap h1 {
+    margin-top: 10vh;
+  }
+  .introHeaderWrap h3 {
+    margin-top: 30vh;
+  }
+  #processDiv {
+    margin-top: 25vh;
+  } */
 }

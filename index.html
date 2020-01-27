@@ -142,12 +142,11 @@
         <div v-for="(img, ind) in loadedArr">
           <img class="randomDrums" :src="img" alt="random drum sets" />
         </div>
-        <p id="scrollUp" @click="reset()" v-show="getStarted">
+        <p id="scrollUp" @click="reset(),scrollUp()" v-show="getStarted">
           Scroll up to reset or exit
         </p>
       </div>
     </div>
-
     <script src="drumFinder.js"></script>
   </body>
 </html>
