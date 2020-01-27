@@ -80,8 +80,9 @@ html {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 30px 5px;
+  padding: 13vh 5px;
   margin-bottom: 100px;
+  background-color: white;
 }
 .subIntro h4 {
   text-align: center;
@@ -240,7 +241,6 @@ html {
 }
 .questions h2 {
   margin-bottom: 3%;
-  /* padding: 13px; */
 }
 .questions button {
   padding: 3px;
@@ -285,6 +285,7 @@ html {
   background-color: #fff;
   width: 100%;
   text-align: center;
+  cursor: pointer;
 }
 @media only screen and (max-width: 350px) {
   .underline {
@@ -307,8 +308,15 @@ html {
   }
 }
 @media only screen and (min-width: 375px) {
+  .getStartedNav {
+    top: 187vh;
+  }
   .questions {
     top: 52.4vh;
+    padding: 2% 0;
+  }
+  .questions h2 {
+    margin: 0 4% 8%;
   }
 }
 @media only screen and (min-width: 420px) {
@@ -336,6 +344,9 @@ html {
   }
 }
 @media only screen and (min-width: 768px) {
+  .getStartedNav {
+    top: 185vh;
+  }
   .underline {
     max-width: 40%;
   }
@@ -349,7 +360,6 @@ html {
     margin-top: 25vh;
   }
   .subIntro {
-    margin-top: 13vh;
     flex-direction: row;
     justify-content: space-around;
   }
@@ -373,13 +383,4 @@ html {
   .underline {
     max-width: 30%;
   }
-  /* .introHeaderWrap h1 {
-    margin-top: 10vh;
-  }
-  .introHeaderWrap h3 {
-    margin-top: 30vh;
-  }
-  #processDiv {
-    margin-top: 25vh;
-  } */
 }
